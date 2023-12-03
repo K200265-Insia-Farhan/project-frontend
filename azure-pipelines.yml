@@ -10,8 +10,8 @@ jobs:
   steps:
   - task: CopyFiles@2
     inputs:
-      SourceFolder: '$(System.DefaultWorkingDirectory)/frontend'
-      Contents: '**/*'
+      SourceFolder: '$(System.DefaultWorkingDirectory)'
+      Contents: 'index.html'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
