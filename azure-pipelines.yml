@@ -1,0 +1,21 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: Build
+  displayName: 'Build and Publish Frontend'
+  steps:
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(System.DefaultWorkingDirectory)/frontend'
+      Contents: '**/*'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: 'frontend'
+    displayName: 'Publish Frontend Build Artifacts'
